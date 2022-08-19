@@ -1,0 +1,36 @@
+■pgadmin4
+http://localhost:8888/
+
+■Django サーバー
+python manage.py runserver
+http://localhost:8000/
+
+■Djangoスタートコマンド
+①django-admin startproject <プロジェクト名> .
+
+②settings.pyの設定変更
+  ※DBなど
+
+■アプリ追加手順
+①python manage.py startapp <アプリ名>
+②settings.pyに、アプリを追加
+
+■DB更新
+①<アプリ名>/models.pyにDBモデルを作成
+②python manage.py makemigrations <アプリ名>
+③python manage.py migrate
+
+■管理用ユーザー作成
+①python manage.py createsuperuser
+②ユーザー名、メールアドレス、パスワードを入力
+
+■requirements.txt生成
+pip freeze > requirements.txt
+
+■SECRET_KEYの再生成
+①python manage.py shell
+②対話モードで以下のコードを実行
+  >>> from django.core.management.utils import get_random_secret_key
+  >>> get_random_secret_key()
+  'xxx-xxxx'
+③出力された文字列をSECRET_KEYに設定

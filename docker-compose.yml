@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    tty: true
+    volumes:
+      - ./:/workspace
+    depends_on:
+      - db
+
+  db:
+    image: postgres:14.4
+    volumes:
+        - postgres_data:/var/lib/postgresql/data
+    environment:
+        POSTGRES_USER: superusr
+        POSTGRES_PASSWORD: 5963
+        POSTGRES_DB: django_pos_db
+
+  pgadmin4:
+    image: dpage/pgadmin4:6.12
+    ports:
+        - 8888:80
+    volumes:
+        - pgadmin4_data:/var/lib/pgadmin
+    environment:
+        PGADMIN_DEFAULT_EMAIL: gongchengtakahiro062@gmail.com
+        PGADMIN_DEFAULT_PASSWORD: 5963
+    depends_on:
+      - db
+
+volumes:
+    postgres_data:
+    pgadmin4_data:
