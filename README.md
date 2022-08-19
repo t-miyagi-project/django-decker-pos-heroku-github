@@ -1,1 +1,1 @@
-# django-decker-pos-heroku-github
+# django-docker-pos-heroku-github
